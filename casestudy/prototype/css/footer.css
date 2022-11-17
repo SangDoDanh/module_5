@@ -1,0 +1,39 @@
+.follow{
+    flex-wrap: wrap;
+}
+footer{
+
+    background-color: #f0f1f3
+}
+
+.copyright{
+    margin: 0;
+    padding: 0;
+    background-color: #183153;
+    color: #f0f1f3;
+}
+.copyright p {
+
+    margin: 12px 0 0 0;
+    padding: 8px 0;
+    font-size: 12px;
+}
+.address ul {
+    margin-top: 12px;
+    list-style: none;
+}
+
+.address ul li {
+    margin-bottom: 12px;
+}
+.address ul li i {
+    margin-right: 8px;
+}
+.btn-footer{
+    outline: none; 
+    background-color: #183153; 
+    color:aliceblue;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+}

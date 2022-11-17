@@ -1,0 +1,8 @@
+.facility-item {
+    margin-bottom: 24px;
+}
+
+.facility-group-btn{
+    display: flex;
+    justify-content: space-evenly;
+}
