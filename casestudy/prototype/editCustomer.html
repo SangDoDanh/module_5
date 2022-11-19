@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edir Customer</title>
+    <script src="https://kit.fontawesome.com/68540fcb59.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/edit-customer.css">
+</head>
+<body class="bg-secondary">
+    <div class="container wrapper">
+        <form action="" class="form-customer__edit bg-light">
+            <h3 class="create-customer-heading">Edit customer</h3>
+            <table class="table-customer__create">
+                <tr>
+                    <td>
+                        <label for="customer-name">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Name</span> 
+                        </label>
+                    </td>
+                    <td>
+                         <input type="text" placeholder=" Name" id="customer-name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="customer-email">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>email</span>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Customer email" id="customer-email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="customer-id-card">
+                            <i class="fa-solid fa-address-card"></i>
+                            <span>Id card</span>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Customer id card" id="customer-id-card">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="customer-phone-number">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>phone number</span>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Customer phone number" id="customer-phone-number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="customer-address">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>address</span>
+                        </label>
+                    </td>
+                    <td>
+                        <textarea name="" id="customer-address" cols="30" rows="3"></textarea>
+                    </td> 
+                </tr>
+                <tr>
+                    <td>
+                        <label for="customer-type">
+                            <i class="fa-solid fa-gem"></i>
+                            <span>Customer type</span> 
+                        </label>
+                    </td>
+                    <td>
+                        <select name="rent-type" id="customer-type">
+                            <option value="">Diamond</option>
+                            <option value="">Gold</option>
+                            <option value="">Sliver</option>
+                            <option value="">Member</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div id="box-button">
+                <button type="submit" id="btn-create">Save</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
