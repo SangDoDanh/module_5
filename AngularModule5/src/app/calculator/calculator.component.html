@@ -1,12 +1,10 @@
 <div class="app">
-
   <div class="app-calculator">
     <h1>Calculator</h1>
     <label for="number-1">Number 1: </label>
     <input type="text" id="number-1" [(ngModel)]="numberOne">
     <br>
     <br>
-
     <label for="number-2">Number 2: </label>
     <input type="text" id="number-2" [(ngModel)]="numberTwo">
     <br>
@@ -20,22 +18,5 @@
     <br>
     <label for="result">Result: </label>
     <input type="text" placeholder="result" id="result" [value]="result">
-  </div>
-  <div id="resize" style="width: 100%;">
-    <table>
-      <tr>
-        <td>
-          <span>Value: {{fontSize}}</span>
-        </td>
-        <td>
-          <input type="range" min="12" max="79" value="18" (change)="changeFontSize($event)">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <span [style.font-size.px]="fontSize">Do Danh Sang C0622G1</span>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
