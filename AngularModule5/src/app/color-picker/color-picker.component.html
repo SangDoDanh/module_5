@@ -1,0 +1,21 @@
+<div class="app-color-picker">
+  <div class="color">
+    <label for="red">Red: {{redValue}}</label><br>
+    <input [(ngModel)]="redValue" type="range" min="0" max="255" (change)="setColor()" id="red">
+    <br><br>
+    <label for="green">Green: {{greenValue}}</label><br>
+    <input [(ngModel)]="greenValue" type="range" min="0" max="255" (change)="setColor()" id="green">
+    <br><br>
+    <label for="blue">Blue: {{blueValue}}</label><br>
+    <input [(ngModel)]="blueValue" type="range" min="0" max="255" (change)="setColor()" id="blue">
+    <br><br>
+  </div>
+  <div>
+    <span>Hex color: {{hexColor}}</span><br>
+    <span>{{backgroundColor}}</span>
+    <br>
+    <div class="result" [style.background-color]="backgroundColor" >
+
+    </div>
+  </div>
+</div>

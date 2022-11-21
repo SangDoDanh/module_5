@@ -1,0 +1,11 @@
+.result {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+.app-color-picker {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

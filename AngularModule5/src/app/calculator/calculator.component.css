@@ -1,0 +1,22 @@
+.app{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.app-calculator{
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  padding: 12px;
+  max-width: 450px;
+  max-height: 350px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+}
+.comparator {
+  display: flex;
+  justify-content: center;
+}
+.comparator button{
+  margin: 0 12px;
+}
