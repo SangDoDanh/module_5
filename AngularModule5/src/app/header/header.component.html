@@ -1,4 +1,4 @@
-<header class="header bg-light">
+<div class="header bg-light">
   <div class="container">
     <nav class="header-nav">
       <ul class="header-menu">
@@ -24,22 +24,22 @@
         </li>
         <div id="search">
           <form action="" id="form-search">
-            <i class="fas fa-search"></i>
+            <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
             <input type="text" placeholder="Search..." class="txt-search">
           </form>
         </div>
         <div id="account">
-          <a href="#">
-            <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+          <a href="#" class="btn btn-sm btn-outline-warning">
+            <fa-icon [icon]="faSign"></fa-icon>
             Login
           </a>
           <span style="margin: 0px 8px;">|</span>
-          <a href="#">
-            <i class="fa-solid fa-user-plus"></i>
+          <a href="#" class="btn btn-sm btn-warning">
+            <fa-icon [icon]="faUserPlus"></fa-icon>
             Register
           </a>
         </div>
       </ul>
     </nav>
   </div>
-</header>
+</div>

@@ -5,22 +5,25 @@ import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import {FormsModule} from '@angular/forms';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
-import { CaseStudyComponent } from './case-study/case-study.component';
-import { HeaderComponent } from './case-study/header/header.component';
-import { FooterComponent } from './case-study/footer/footer.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {FacilityComponent} from './facility/facility.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CalculatorComponent,
     ColorPickerComponent,
-    CaseStudyComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FacilityComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
