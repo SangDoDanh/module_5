@@ -13,6 +13,7 @@ import { AddFacilityComponent } from './add-facility/add-facility.component';
 import { ArticleComponent } from './article/article.component';
 import { LikeComponent } from './like/like.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditFacilityComponent } from './edit-facility/edit-facility.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddFacilityComponent,
     ArticleComponent,
     LikeComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditFacilityComponent
   ],
   imports: [
     BrowserModule,
