@@ -1,0 +1,64 @@
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.form-facility__create{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  min-width: 500px;
+  border-radius: 4px;
+  padding: 24px 12px;
+  border: 1px solid rgb(106, 220, 182);;
+  box-shadow: 1px 3px 2px rgb(106, 220, 182);
+}
+.form-facility__create label{
+  color: rgb(18, 103, 75);
+  text-transform: capitalize;
+}
+.form-facility__create input, .form-facility__create select, .form-facility__create textarea {
+  width: 100%;
+  padding:8px;
+  border: 1px solid rgb(106, 220, 182);
+  border-radius: 3px;
+  margin-left: 8px;
+  font-size: 16px;
+  outline: none;
+  min-width: 264.667px;
+}
+.create-facility-heading{
+  width: 100%;
+  color: rgb(18, 103, 75);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.table-facility__create tr td{
+  padding-bottom: 12px;
+}
+
+#box-button{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  justify-content: center;
+}
+#btn-create{
+  min-width: 100%;
+  border: 1px solid rgb(106, 220, 182);
+  outline: none;
+  border-radius: 2px;
+  padding: 6px 0;
+  background-color: rgb(41, 150, 114);
+  color: aliceblue;
+  font-size: 20px;
+}

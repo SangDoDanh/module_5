@@ -1,24 +1,35 @@
 <div class="facility-container">
 
   <div class="container">
-    <form action="#" class="form-serach">
-      <div class="search-group">
-        <input class="input" type="date" id="contract-start-day" style="width: auto;">
-        <label>
-          <span class="m-2">To</span>
-        </label>
-        <input class="input" type="date" id="contract-end-day" style="width: auto;">
-      </div>
-      <div class="search-group">
-        <input class="input" type="text" id="promo-code" style="width: auto;" placeholder="Promo code">
-      </div>
-      <div class="search-group">
-        <button class="btn btn-outline-info btn-sm">
-          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-          Check Now
-        </button>
-      </div>
-    </form>
+    <div class="check-search-group" style="display: flex; justify-content: space-between; align-items: center">
+      <form action="#" class="form-search">
+        <div class="check-group">
+          <input class="input" type="date" id="contract-start-day" style="width: auto;">
+          <label>
+            <span class="m-2">To</span>
+          </label>
+          <input class="input" type="date" id="contract-end-day" style="width: auto;">
+        </div>
+        <div class="check-group">
+          <input class="input" type="text" id="promo-code" style="width: auto;" placeholder="Promo code">
+        </div>
+        <div class="check-group">
+          <button class="btn btn-outline-info btn-sm">
+            Check Now
+          </button>
+        </div>
+        <div class="m-0">
+          <select class="select">
+            <option>--select service--</option>
+            <option value="">Villa</option>
+            <option value="">Room</option>
+            <option value="">House</option>
+          </select>
+        </div>
+      </form>
+
+    </div>
+
     <div class="row">
       <div class="col-lg-3 facility-item">
         <div class="card">

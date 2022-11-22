@@ -10,14 +10,21 @@
   display: flex;
   justify-content: space-between;
 }
-.form-serach {
+.form-search {
   margin: 32px 0;
   display: flex;
   border-bottom: 1px solid #35a0b8;
-  padding: 12px 12px;
+  padding: 12px 0px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.check-group {
+  margin-right: 24px;
+
 }
 .search-group {
-  margin-right: 24px;
+
 }
 .form-control{
   width: auto !important;
@@ -29,6 +36,14 @@
   border-radius: 3px;
 
 }
+.select {
+  outline: none;
+  border: 1px solid #ffc107;
+  padding: 2px 8px;
+  border-radius: 3px;
+
+}
+
 
 .facility-group-service {
   display: flex;

@@ -9,6 +9,10 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {FacilityComponent} from './facility/facility.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { AddFacilityComponent } from './add-facility/add-facility.component';
+import { ArticleComponent } from './article/article.component';
+import { LikeComponent } from './like/like.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     ColorPickerComponent,
     HeaderComponent,
     FooterComponent,
-    FacilityComponent
+    FacilityComponent,
+    AddFacilityComponent,
+    ArticleComponent,
+    LikeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
