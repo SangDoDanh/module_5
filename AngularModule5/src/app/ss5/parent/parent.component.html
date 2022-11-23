@@ -1,0 +1,67 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header  bg-success">
+          <h4 class="card-title">Student List</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Point</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of students; index as i">
+              <td>{{i+1}}</td>
+              <td (click)="showDetail(student)" class="text-info">{{student.name}}</td>
+              <td>
+                <span *ngIf="student.gender == 1">FeMale</span>
+                <span *ngIf="student.gender == 0">Male</span>
+                <span *ngIf="student.gender == 2">LGBT</span>
+              </td>
+              <td>{{student.point}}</td>
+              <td>
+                <button (click)="cofirmRemove(student)" type="button" class="btn btn-danger btn-sm mx-2" data-toggle="modal" data-target="#modelId">
+                  Delete
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <app-child></app-child>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Delete Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="studentDelete">Ban co muon xoa <span class="text-danger">{{studentDelete.name}}</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-close-modal">Close</button>
+        <button (click)="removeStudent(studentDelete)" onclick="remove()" type="button" class="btn btn-danger">remove</button>
+      </div>
+    </div>
+  </div>
+</div>

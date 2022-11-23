@@ -1,0 +1,7 @@
+.card {
+  min-height: 180px !important;
+}
+.text-info:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

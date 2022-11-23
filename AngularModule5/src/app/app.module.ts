@@ -14,6 +14,10 @@ import { ArticleComponent } from './article/article.component';
 import { LikeComponent } from './like/like.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EditFacilityComponent } from './edit-facility/edit-facility.component';
+import { ParentComponent } from './ss5/parent/parent.component';
+import { ChildComponent } from './ss5/child/child.component';
+import { RatingComponent } from './ss6/rating/rating.component';
+import { CountdownTimerComponent } from './ss6/countdown-timer/countdown-timer.component';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { EditFacilityComponent } from './edit-facility/edit-facility.component';
     ArticleComponent,
     LikeComponent,
     NavbarComponent,
-    EditFacilityComponent
+    EditFacilityComponent,
+    ParentComponent,
+    ChildComponent,
+    RatingComponent,
+    CountdownTimerComponent
   ],
   imports: [
     BrowserModule,

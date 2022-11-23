@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header  bg-info">
+    <h4 class="card-title">Student Detail</h4>
+  </div>
+  <div class="card-body">
+    <div class="content" *ngIf="_studentService.student; else noData">
+      <p class="card-text">Name: {{_studentService.student.name}}</p>
+      <p class="card-text">Gender:
+        <span *ngIf="_studentService.student.gender == 1">FeMale</span>
+        <span *ngIf="_studentService.student.gender == 0">Male</span>
+        <span *ngIf="_studentService.student.gender == 2">LGBT</span>
+      </p>
+      <div class="card-text">
+        <label>point:</label>
+        <input type="text" [(ngModel)]="_studentService.student.point">
+      </div>
+    </div>
+    <ng-template class="content" #noData>
+      <span class="text-danger">No Data</span>
+    </ng-template>
+  </div>
+</div>
+
+<div class="card mt-2">
+  <div class="card-header  bg-warning">
+    <h4 class="card-title">Add Student</h4>
+  </div>
+  <div class="card-body">
+    <div class="student-info">
+      <label for="student-name">Name: </label>
+      <input type="text" name="" class="form-control" id="student-name" #name>
+    </div>
+    <div class="student-info d-flex">
+      <label>Gender: </label>
+      <label class="mx-2">
+        <input type="radio" value="0" checked #male name="gender"> Male
+      </label>
+      <label class="mx-2">
+        <input type="radio" value="1" #female name="gender"> Female
+      </label>
+      <label class="mx-2">
+        <input type="radio" value="2" #lgbt name="gender"> LGBT
+      </label>
+    </div>
+    <div class="student-info">
+      <label for="student-point">Point: </label>
+      <input type="text" name="" class="form-control" id="student-point" #point>
+    </div>
+    <div class="student-info">
+      <button class="btn btn-outline-success" (click)="createStudent(name.value, male, female, lgbt, point.value)">Save</button>
+    </div>
+  </div>
+</div>
