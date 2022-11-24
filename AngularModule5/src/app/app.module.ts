@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
@@ -18,6 +18,11 @@ import { ParentComponent } from './ss5/parent/parent.component';
 import { ChildComponent } from './ss5/child/child.component';
 import { RatingComponent } from './ss6/rating/rating.component';
 import { CountdownTimerComponent } from './ss6/countdown-timer/countdown-timer.component';
+import { CustomerComponent } from './customer/customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { AddContractComponent } from './add-contract/add-contract.component';
+import { ContractComponent } from './contract/contract.component';
 
 
 @NgModule({
@@ -36,13 +41,19 @@ import { CountdownTimerComponent } from './ss6/countdown-timer/countdown-timer.c
     ParentComponent,
     ChildComponent,
     RatingComponent,
-    CountdownTimerComponent
+    CountdownTimerComponent,
+    CustomerComponent,
+    EditCustomerComponent,
+    AddCustomerComponent,
+    AddContractComponent,
+    ContractComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    FontAwesomeModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        FontAwesomeModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

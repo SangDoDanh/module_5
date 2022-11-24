@@ -8,7 +8,7 @@ import {StudentService} from '../service/student.service';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
-
+  count = 1;
   studentDelete: any;
   students: Student[];
   // tslint:disable-next-line:variable-name
@@ -29,4 +29,5 @@ export class ParentComponent implements OnInit {
   removeStudent(student: Student) {
     this._StudentService.remove(student);
   }
+
 }
