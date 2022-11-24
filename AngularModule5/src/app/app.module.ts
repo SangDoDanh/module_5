@@ -23,6 +23,8 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { AddContractComponent } from './add-contract/add-contract.component';
 import { ContractComponent } from './contract/contract.component';
+import { SignInComponent } from './ss7/sign-in/sign-in.component';
+import { RegisterComponent } from './ss7/register/register.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { ContractComponent } from './contract/contract.component';
     EditCustomerComponent,
     AddCustomerComponent,
     AddContractComponent,
-    ContractComponent
+    ContractComponent,
+    SignInComponent,
+    RegisterComponent
   ],
     imports: [
         BrowserModule,

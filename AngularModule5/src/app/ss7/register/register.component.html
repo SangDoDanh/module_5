@@ -1,0 +1,68 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-12 d-flex justify-content-center">
+      <form [formGroup]="rfStudent" class="form  bg-light">
+        <h3>Register Form...</h3>
+        <hr>
+        <div class="mb-3">
+          <label class="form-label">Email *</label>
+          <input formControlName="email" type="text" class="form-control" placeholder="Enter email"
+                 [ngClass]="rfStudent.controls['email'].touched && rfStudent.controls['email'].errors ? 'is-invalid' :
+                 rfStudent.controls['email'].touched && rfStudent.controls['email'].valid ? 'is-valid' : ''">
+          <div class="invalid-feedback">
+            Not empty! Ex: exampleEmail@gmail.com
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="mb-3 ml-2">
+            <label class="form-label">Age</label>
+            <input formControlName="age" type="text" class="form-control"
+                   [ngClass]="rfStudent.controls['age'].touched && rfStudent.controls['age'].errors ? 'is-invalid' :
+                              rfStudent.controls['age'].touched && rfStudent.controls['age'].valid ? 'is-valid' : ''">
+            <div class="invalid-feedback">
+              Not Empty! Min age : 18
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input formControlName="phone" type="number" class="form-control" >
+          </div>
+        </div>
+        <div class="mb-3">
+          <span class="text-bold" style="margin-right: 12px">Gender </span>
+          <div class="form-check form-check-inline">
+            <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="male" [value]="0">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="female" [value]="1">
+            <label class="form-check-label" for="female">FeMale</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="lgbt" [value]="2">
+            <label class="form-check-label" for="lgbt">LGBT</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password *</label>
+          <input formControlName="password" type="password" class="form-control"
+                 [ngClass]="rfStudent.controls['password'].dirty && rfStudent.controls['password'].errors ? 'is-invalid' :
+                              rfStudent.controls['password'].dirty && rfStudent.controls['password'].valid ? 'is-valid' : ''">
+          <div class="invalid-feedback">
+            <p>Not empty! Password is min length : 6</p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Confirm Password *</label>
+          <input formControlName="confirmPassword" type="password" class="form-control"
+                 [ngClass]="rfStudent.errors?.reConfirmPassword ? 'is-invalid' :
+                 rfStudent.controls['confirmPassword'].valid ?'is-valid': ''">
+          <div class="invalid-feedback">
+            <p>Not empty! ReConfirmPassword is-invalid!</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="rfStudent.invalid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

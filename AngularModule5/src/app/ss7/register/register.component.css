@@ -1,0 +1,20 @@
+
+*:not(i){
+  font-family: sans-serif;
+}
+.form{
+  box-shadow: 1px 1px 17px rgba(0, 0, 0, 0.35);
+  padding: 24px 32px;
+  border-radius: 4px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}
+.ml-2 {
+  margin-right: 12px;
+}
+label, .text-bold {
+  font-weight: bold;
+}
