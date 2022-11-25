@@ -1,0 +1,19 @@
+.toast {
+  position: absolute;
+  z-index: 10;
+  top: 2%;
+  left: 37%;
+  /*transform: translateX(-50%);*/
+  animation: move-top 0.7s ease;
+}
+
+@keyframes move-top {
+  0%{
+    opacity: 0;
+    transform: scale(0%);
+  }
+  100%  {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}

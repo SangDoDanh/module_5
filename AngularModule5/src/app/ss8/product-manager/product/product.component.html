@@ -1,0 +1,39 @@
+<div class="container">
+  <app-product-header></app-product-header>
+
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+          <td>{{product.id}}</td>
+          <td>
+            <a [routerLink]="['/product-detail', product.id]">{{product.name}}</a>
+          </td>
+          <td>{{product.price}}</td>
+          <td>{{product.description}}</td>
+          <td>
+            <div class="d-flex justify-content-evenly">
+              <button [routerLink]="['/product-edit', product.id]" class="btn btn-warning btn-sm">edit</button>
+              <button [routerLink]="['/product-delete', product.id]" class="btn btn-danger btn-sm">delete</button>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="message" class="toast align-items-center text-bg-success border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      <p>{{message}}</p>
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>

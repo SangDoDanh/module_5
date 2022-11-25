@@ -1,0 +1,15 @@
+*{
+  box-sizing: border-box;
+}
+.my-table tr {
+  border: 1px solid #e59d30;
+  border-collapse: collapse;
+}
+.my-table {
+  min-width: 50%;
+}
+
+.my-table td, .my-table th {
+  padding: 8px;
+}
+

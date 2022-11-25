@@ -1,0 +1,21 @@
+<app-product-header></app-product-header>
+<div class="container wrapper">
+  <form [formGroup]="rfProduct" (ngSubmit)="saveProduct()">
+    <div class="mb-3">
+      <h2 style="font-family: sans-serif;">Edit product</h2>
+    </div>
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input formControlName = "productName" type="text" class="form-control" id="productName">
+    </div>
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Product price</label>
+      <input formControlName = "productPrice" type="text" class="form-control" id="productPrice">
+    </div>
+    <div class="mb-3">
+      <label for="ProductDescription" class="form-label">Product Description</label>
+      <input formControlName = "productDescription" type="text" class="form-control" id="ProductDescription">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>

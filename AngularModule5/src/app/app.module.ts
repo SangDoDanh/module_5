@@ -25,6 +25,15 @@ import { AddContractComponent } from './add-contract/add-contract.component';
 import { ContractComponent } from './contract/contract.component';
 import { SignInComponent } from './ss7/sign-in/sign-in.component';
 import { RegisterComponent } from './ss7/register/register.component';
+import { DictionaryComponent } from './ss8/dictionary/dictionary.component';
+import { DictionaryDetailComponent } from './ss8/dictionary-detail/dictionary-detail.component';
+import {AngularRoutingModule} from './angular-routing.module';
+import {RouterModule} from '@angular/router';
+import { ProductComponent } from './ss8/product-manager/product/product.component';
+import { ProductDetailComponent } from './ss8/product-manager/product-detail/product-detail.component';
+import { ProductEditComponent } from './ss8/product-manager/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './ss8/product-manager/product-delete/product-delete.component';
+import { ProductHeaderComponent } from './ss8/product-manager/product-header/product-header.component';
 
 
 @NgModule({
@@ -50,14 +59,23 @@ import { RegisterComponent } from './ss7/register/register.component';
     AddContractComponent,
     ContractComponent,
     SignInComponent,
-    RegisterComponent
+    RegisterComponent,
+    DictionaryComponent,
+    DictionaryDetailComponent,
+    ProductComponent,
+    ProductDetailComponent,
+    ProductEditComponent,
+    ProductDeleteComponent,
+    ProductHeaderComponent
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        FontAwesomeModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    AngularRoutingModule,
+    RouterModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
