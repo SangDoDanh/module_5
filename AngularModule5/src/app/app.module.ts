@@ -34,6 +34,9 @@ import { ProductDetailComponent } from './ss8/product-manager/product-detail/pro
 import { ProductEditComponent } from './ss8/product-manager/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './ss8/product-manager/product-delete/product-delete.component';
 import { ProductHeaderComponent } from './ss8/product-manager/product-header/product-header.component';
+import { ConnectBackendComponent } from './ss9/connect-backend/connect-backend.component';
+import {HttpClientModule} from '@angular/common/http';
+import { TodoAppComponent } from './ss9/todo-app/todo-app.component';
 
 
 @NgModule({
@@ -66,7 +69,9 @@ import { ProductHeaderComponent } from './ss8/product-manager/product-header/pro
     ProductDetailComponent,
     ProductEditComponent,
     ProductDeleteComponent,
-    ProductHeaderComponent
+    ProductHeaderComponent,
+    ConnectBackendComponent,
+    TodoAppComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +79,8 @@ import { ProductHeaderComponent } from './ss8/product-manager/product-header/pro
     FontAwesomeModule,
     ReactiveFormsModule,
     AngularRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,11 +12,12 @@ export class ProductComponent implements OnInit {
   message: string;
   // tslint:disable-next-line:variable-name
   constructor(private _productService: ProductServiceService) {
-    this.products = this._productService.products;
+    this._productService.findAll().subscribe(data => {
+      this.products = data;
+    });
   }
 
   ngOnInit(): void {
-    // this.message = this._productService.message;
     this.message = this._productService.message;
   }
 

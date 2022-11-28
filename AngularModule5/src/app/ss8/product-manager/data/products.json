@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "name": "iphone 14",
+      "id": 1,
+      "price": 1000,
+      "description": "iphone 14 pro max gold, 1TB",
+      "category": {
+        "name": "phone",
+        "id": 1
+      }
+    },
+    {
+      "id": 2,
+      "name": "iphone 13",
+      "description": "iphone 13 pro max gold, 1TB",
+      "price": "1300",
+      "category": {
+        "id": 2,
+        "name": "laptop"
+      }
+    },
+    {
+      "name": "iphone 12",
+      "id": 3,
+      "price": 1000,
+      "description": "iphone 12 pro max black, 1TB",
+      "category": {
+        "name": "phone",
+        "id": 1
+      }
+    },
+    {
+      "name": "Mac 16 pro",
+      "id": 4,
+      "price": 1000,
+      "description": "Mac 16pro 32g, cpu 16, 1TB",
+      "category": {
+        "name": "laptop",
+        "id": 2
+      }
+    },
+    {
+      "name": "Dell xps15",
+      "id": 5,
+      "price": 1000,
+      "description": "Dell xps 15.6 inch, i7",
+      "category": {
+        "name": "laptop",
+        "id": 2
+      }
+    }
+  ],
+  "categorys": [
+    {
+      "id": 1,
+      "name": "phone"
+    },
+    {
+      "id": 2,
+      "name": "laptop"
+    }
+  ]
+}

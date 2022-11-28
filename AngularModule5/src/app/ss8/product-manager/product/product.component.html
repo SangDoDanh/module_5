@@ -8,6 +8,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Description</th>
+        <th>category</th>
         <th class="text-center">Action</th>
       </tr>
     </thead>
@@ -19,7 +20,8 @@
           </td>
           <td>{{product.price}}</td>
           <td>{{product.description}}</td>
-          <td>
+        <td>{{product.category.name}}</td>
+        <td>
             <div class="d-flex justify-content-evenly">
               <button [routerLink]="['/product-edit', product.id]" class="btn btn-warning btn-sm">edit</button>
               <button [routerLink]="['/product-delete', product.id]" class="btn btn-danger btn-sm">delete</button>
@@ -29,7 +31,7 @@
     </tbody>
   </table>
 </div>
-<div *ngIf="message" class="toast align-items-center text-bg-success border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
+<div *ngIf="message && message.length >10" class="toast align-items-center text-bg-success border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="d-flex">
     <div class="toast-body">
       <p>{{message}}</p>

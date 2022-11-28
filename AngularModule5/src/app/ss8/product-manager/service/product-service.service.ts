@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Product} from '../module/product';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,40 +11,19 @@ export class ProductServiceService {
   // tslint:disable-next-line:variable-name
   private _message: string;
 
-  constructor() {
+  // tslint:disable-next-line:variable-name
+  constructor(private _httpClient: HttpClient) {
   }
 
   get message(): string {
     return this._message;
   }
 // tslint:disable-next-line:variable-name
-  private _products: Product[] = [{
-    id: 1,
-    name: 'IPhone 12',
-    price: 2400000,
-    description: 'New'
-  }, {
-    id: 2,
-    name: 'IPhone 11',
-    price: 1560000,
-    description: 'Like new'
-  }, {
-    id: 3,
-    name: 'IPhone X',
-    price: 968000,
-    description: '97%'
-  }, {
-    id: 4,
-    name: 'IPhone 8',
-    price: 7540000,
-    description: '98%'
-  }, {
-    id: 5,
-    name: 'IPhone 11 Pro',
-    price: 1895000,
-    description: 'Like new'
-  }];
+  private _products: Product[];
 
+  findAll(): Observable<Product[]> {
+    return this._httpClient.get<Product[]>(environment.URL_API);
+  }
   get products(): Product[] {
     return this._products;
   }
@@ -50,15 +32,17 @@ export class ProductServiceService {
     this._products = value;
   }
 
-  getProductById(productId: number) {
-    // tslint:disable-next-line:radix
-    return this._products.find(value => parseInt(productId + '') === value.id);
+  getProductById(productId: number): Observable<Product> {
+    return this._httpClient.get<Product>(environment.URL_API + '/' + productId);
   }
   setValueMessage(value: string) {
     this._message = value;
   }
-  remove(product: Product) {
-    const index = this._products.indexOf(product);
-    this._products.splice(index, 1);
+  remove(id: number): Observable<void> {
+    return this._httpClient.delete<void>(environment.URL_API + '/' + id);
+  }
+
+  save(productEdit: Product): Observable<Product> {
+    return this._httpClient.put<Product>(environment.URL_API + '/' + productEdit.id, productEdit);
   }
 }

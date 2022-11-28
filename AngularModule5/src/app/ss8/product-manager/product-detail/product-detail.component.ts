@@ -15,7 +15,9 @@ export class ProductDetailComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _activatedRoute: ActivatedRoute, private _productService: ProductServiceService) {
     this.productId = this._activatedRoute.snapshot.params.id;
-    this.productDetail = this._productService.getProductById(this.productId);
+    this._productService.getProductById(this.productId).subscribe(value => {
+      this.productDetail = value;
+    });
   }
   ngOnInit(): void {
   }

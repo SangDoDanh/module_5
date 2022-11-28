@@ -16,23 +16,28 @@ export class ProductDeleteComponent implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _productService: ProductServiceService,
-              private _formBuilder: FormBuilder, private router: Router) {
-    this.productId = this._activatedRoute.snapshot.params.id;
-    this.productDelete = this._productService.getProductById(this.productId);
-  }
+              private _formBuilder: FormBuilder, private router: Router) {  }
 
   ngOnInit(): void {
-    this.rfProduct = this._formBuilder.group({
-      productName: [this.productDelete.name],
-      productDescription: [this.productDelete.description],
-      productPrice: [this.productDelete.price]
+    this.productId = this._activatedRoute.snapshot.params.id;
+    this._productService.getProductById(this.productId).subscribe(productDelete => {
+      this.rfProduct = this._formBuilder.group({
+        name: [productDelete.name],
+        description: [productDelete.description],
+        price: [productDelete.price],
+        id: [productDelete.id],
+        category: [productDelete.category.name]
+      });
+      this._productService.setValueMessage('');
     });
   }
   saveProduct() {
     // @ts-ignore
-    this._productService.setValueMessage('Remove ' + this.productDelete.name + ' Ok');
-    this._productService.remove(this.productDelete);
-    this.router.navigateByUrl('/product').then(r => null);
+    this._productService.remove(this.rfProduct.value.id).subscribe(() => {
+      this._productService.setValueMessage('Remove ' + this.rfProduct.value.name + ' Ok');
+      this.router.navigateByUrl('/product').then(r => null);
+
+    });
   }
 
 }
