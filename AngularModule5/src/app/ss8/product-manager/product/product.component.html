@@ -30,6 +30,8 @@
       </tr>
     </tbody>
   </table>
+  <button class="btn btn-outline-success" (click)="showMessageSuccess()">Success</button>
+  <button class="btn btn-outline-danger" (click)="showMessageError()">error</button>
 </div>
 <div *ngIf="message && message.length >10" class="toast align-items-center text-bg-success border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="d-flex">

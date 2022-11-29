@@ -1,0 +1,469 @@
+{
+  "facilitys": [
+    {
+      "id": 1,
+      "name": "Pari mua he co tuyet",
+      "area": 330,
+      "floors": 3,
+      "maxPeople": 20,
+      "cost": 500,
+      "status": false,
+      "standRoom": "Luxury",
+      "description": "Vie Huong bien",
+      "poolArea": 200,
+      "freeService": "",
+      "facilityType": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Ngay"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Japan mai dinh",
+      "area": 400,
+      "floors": 3,
+      "maxPeople": 15,
+      "cost": 500,
+      "status": false,
+      "standRoom": "Luxury",
+      "description": "Vie Huong bien",
+      "poolArea": 150,
+      "freeService": "",
+      "facilityType": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Ngay"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Pari mua dong co tuyet",
+      "area": 230,
+      "floors": 3,
+      "maxPeople": 3,
+      "cost": 1000,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Giat ui, bep ga, nong lanh",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Ngay"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Ngoi nha thien duong",
+      "area": 230,
+      "floors": 3,
+      "maxPeople": 5,
+      "cost": 500,
+      "status": false,
+      "standRoom": "Luxury",
+      "description": "Toan gai xinh, gan cho, gan san bay",
+      "poolArea": 0,
+      "freeService": "",
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Pari mua dong co tuyet",
+      "area": 230,
+      "floors": 3,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "Luxury",
+      "description": "Vie Huong bien",
+      "poolArea": 0,
+      "freeService": "",
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 3,
+        "name": "Nam"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Ngoi nha cua bong da",
+      "area": 230,
+      "floors": 3,
+      "maxPeople": 5,
+      "cost": 1300,
+      "status": false,
+      "standRoom": "Luxury",
+      "description": "View Huong bien",
+      "poolArea": 0,
+      "freeService": "",
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 3,
+        "name": "Nam"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Da nang mai dinh",
+      "area": 330,
+      "floors": 3,
+      "maxPeople": 5,
+      "cost": 555,
+      "status": false,
+      "standRoom": "VIP PRO",
+      "description": "View Huong bien, huong moi thu",
+      "poolArea": 333,
+      "freeService": "",
+      "facilityType": {
+        "id": 3,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 3,
+        "name": "Nam"
+      }
+    },
+    {
+      "id": 8,
+      "name": "House cua siu nhan",
+      "area": 230,
+      "floors": 3,
+      "maxPeople": 5,
+      "cost": 777,
+      "status": false,
+      "standRoom": "Luxury",
+      "description": "Mang ca the gioi den gan ban",
+      "poolArea": 0,
+      "freeService": "Giat ui, bep ga, nong lanh",
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 3,
+        "name": "Nam"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 14,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 15,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 16,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 17,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 18,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 19,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 20,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    },{
+      "id": 21,
+      "name": "Room sieu cap vip pro",
+      "area": 230,
+      "floors": 0,
+      "maxPeople": 5,
+      "cost": 1200,
+      "status": false,
+      "standRoom": "",
+      "description": "",
+      "poolArea": 0,
+      "freeService": "Mang ca the gioi den gan ban",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Thang"
+      }
+    }
+  ],
+  "rentTypes": [
+    {
+      "id": 1,
+      "name": "Ngay"
+    },
+    {
+      "id": 2,
+      "name": "Thang"
+    },
+    {
+      "id": 3,
+      "name": "Nam"
+    },
+    {
+      "id": 4,
+      "name": "Gio"
+    }
+  ],
+  "facilityTypes": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
+    }
+  ]
+}

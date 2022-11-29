@@ -1,5 +1,8 @@
 *{
   box-sizing: border-box;
+
+}
+*:not(i) {
   font-family: sans-serif;
 }
 
@@ -61,4 +64,7 @@
   background-color: rgb(41, 150, 114);
   color: aliceblue;
   font-size: 20px;
+}
+td label i {
+  margin-right: 8px;
 }

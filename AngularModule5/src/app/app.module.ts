@@ -37,6 +37,9 @@ import { ProductHeaderComponent } from './ss8/product-manager/product-header/pro
 import { ConnectBackendComponent } from './ss9/connect-backend/connect-backend.component';
 import {HttpClientModule} from '@angular/common/http';
 import { TodoAppComponent } from './ss9/todo-app/todo-app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -80,7 +83,10 @@ import { TodoAppComponent } from './ss9/todo-app/todo-app.component';
     ReactiveFormsModule,
     AngularRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

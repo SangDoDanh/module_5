@@ -1,50 +1,41 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
 <div class="facility-container">
-
   <div class="container">
-    <div class="check-search-group" style="display: flex; justify-content: space-between; align-items: center">
-      <form action="#" class="form-search">
-        <div class="check-group">
-          <input class="input" type="date" id="contract-start-day" style="width: auto;">
-          <label>
-            <span class="m-2">To</span>
-          </label>
-          <input class="input" type="date" id="contract-end-day" style="width: auto;">
-        </div>
-        <div class="check-group">
-          <input class="input" type="text" id="promo-code" style="width: auto;" placeholder="Promo code">
-        </div>
-        <div class="check-group">
-          <button class="btn btn-outline-info btn-sm">
-            Check Now
-          </button>
-        </div>
-        <div class="m-0">
-          <select class="select">
-            <option>--select service--</option>
-            <option value="">Villa</option>
-            <option value="">Room</option>
-            <option value="">House</option>
-          </select>
-        </div>
+    <div class="row d-flex justify-content-between align-items-center form-search">
+      <form [formGroup]="searchForm" (ngSubmit)="search()" class="d-flex w-auto">
+        <input formControlName="nameSearch" type="text" class="form-control mx-2" placeholder="Search by name...">
+        <select formControlName="rentType" class="form-select w-auto mx-2" (change)="search()">
+          <option [value]="1>0?'':''">--Select Rent Type--</option>
+          <option *ngFor="let rentType of renTypes" [value]="rentType.id">{{rentType.name}}</option>
+        </select>
+        <select formControlName="facilityType" class="form-select w-auto mx-2" (change)="search()">
+          <option [value]="1>0?'':''">--Select Facility Type--</option>
+          <option *ngFor="let facilityType of facilityTypes" [value]="facilityType.id">{{facilityType.name}}</option>
+        </select>
       </form>
-
+      <pagination-controls class="w-auto" (pageChange)="p = $event"></pagination-controls>
+      <div class="d-flex justify-content-center">
+        <div class="hr"></div>
+      </div>
     </div>
 
     <div class="row">
-      <div class="col-lg-3 facility-item">
+      <div *ngFor="let facility of facilityList | paginate: { itemsPerPage: 5, currentPage: p }"
+           class="col-lg-3 facility-item">
         <div class="card">
           <img
             src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
             class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
+            <h5 class="card-title">{{facility.name}}</h5>
             <p class="card-text d-flex justify-content-between">
                 <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
+                    Diện tích: <span>{{facility.area}}m <sup>2</sup></span>
                 </span>
               <span>
                   Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
+                  <span class="text-danger" style="font-weight: bold;">${{facility.cost}}</span>
                 </span>
             </p>
             <div class="facility-group-service text-secondary">
@@ -70,321 +61,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 facility-item">
-        <div class="card">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">VIEW HƯỚNG BIỂN</h5>
-            <p class="card-text d-flex justify-content-between">
-                <span>
-                    Diện tích: <span>85.5m <sup>2</sup></span>
-                </span>
-              <span>
-                  Giá:
-                  <span class="text-danger" style="font-weight: bold;">$200</span>
-                </span>
-            </p>
-            <div class="facility-group-service text-secondary">
-              <span>
-                    <fa-icon [icon]="faBath"></fa-icon>
-                    :2
-                </span>
-              <span>
-                    <fa-icon [icon]="faPlaneDeparture"></fa-icon>
-                    :2Km
-                </span>
-              <fa-icon [icon]="faCar"></fa-icon>
-              <span>
-                    <fa-icon [icon]="faBed"></fa-icon>
-                    :2
-                </span>
-
-            </div>
-            <div class="facility-group-btn">
-              <a href="#" class="btn btn-outline-info">Xem Thêm</a>
-              <a href="#" class="btn btn-warning">Đặt Ngay</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-
 </div>
+<app-footer></app-footer>

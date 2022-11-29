@@ -53,13 +53,20 @@
       </div>
       <div class="col-lg-6">
         <h4 style="margin-top: 12px">Góp Ý Cho Chúng Tôi</h4>
-        <form action="">
-          <textarea name="" id="" cols="30" rows="3" class="w-100"></textarea>
+        <form  class="form-floating">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Comments</label>
+          </div>
           <div class="d-flex align-items-end justify-content-between mt-2 mb-3">
-            <span>Email: </span>
-            <input type="text" placeholder="email">
-            <span>Phone: </span>
-            <input type="text" placeholder="Phone">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+              <label for="floatingInputEmail">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingInputPhone" placeholder="name@example.com">
+              <label for="floatingInputPhone">Phone</label>
+            </div>
           </div>
           <input  type="submit" value="FeedBack" class="w-100 btn-footer">
         </form>

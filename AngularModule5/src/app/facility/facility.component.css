@@ -1,6 +1,13 @@
 .facility-item {
   margin-bottom: 24px;
 }
+.facility-item .card{
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+
+}
+.facility-container {
+  background: #f8f9fa;
+}
 
 .facility-item:hover .card{
   box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.35);
@@ -11,13 +18,13 @@
   justify-content: space-between;
 }
 .form-search {
-  margin: 32px 0;
-  display: flex;
-  border-bottom: 1px solid #35a0b8;
-  padding: 12px 0px;
-  display: flex;
-  align-items: center;
-  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+.form-search .hr {
+  margin-top: 16px;
+  width: 98%;
+  border-bottom: 1px solid #ffc107;
 }
 .check-group {
   margin-right: 24px;
@@ -29,24 +36,15 @@
 .form-control{
   width: auto !important;
 }
-.input {
-  outline: none;
-  border: 1px solid #0dcaf0;
-  padding: 2px 8px;
-  border-radius: 3px;
-
-}
-.select {
-  outline: none;
-  border: 1px solid #ffc107;
-  padding: 2px 8px;
-  border-radius: 3px;
-
-}
-
-
 .facility-group-service {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+}
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  color: #fefefe;
+  cursor: default;
+  background: #ffc107;
+  border-radius: 2px;
 }

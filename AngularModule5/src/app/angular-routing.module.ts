@@ -7,16 +7,22 @@ import {ProductComponent} from './ss8/product-manager/product/product.component'
 import {ProductDetailComponent} from './ss8/product-manager/product-detail/product-detail.component';
 import {ProductEditComponent} from './ss8/product-manager/product-edit/product-edit.component';
 import {ProductDeleteComponent} from './ss8/product-manager/product-delete/product-delete.component';
+import {FacilityComponent} from './facility/facility.component';
+import {AddFacilityComponent} from './add-facility/add-facility.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'product'},
+  {path: '', pathMatch: 'full', redirectTo: 'facility'},
   {path: 'dictionary', component: DictionaryComponent},
   {path: 'dictionary-detail/:index', component: DictionaryDetailComponent},
   {path: 'product', component: ProductComponent},
   {path: 'product-detail/:id', component: ProductDetailComponent},
   {path: 'product-edit/:id', component: ProductEditComponent},
   {path: 'product-delete/:id', component: ProductDeleteComponent},
+  {path: 'facility', component: FacilityComponent,
+    children: [
+      {path: 'add-facility', component: AddFacilityComponent}
+    ]}
 ];
 
 @NgModule({

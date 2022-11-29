@@ -17,17 +17,17 @@
           <a class="header-link" href="#">Customer</a>
         </li>
         <li class="header-item">
-          <a class="header-link" href="#">Service</a>
-        </li>
-        <li class="header-item">
           <a class="header-link" href="#">Employee</a>
         </li>
-        <div id="search">
-          <form action="" id="form-search">
-            <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
-            <input type="text" placeholder="Search..." class="txt-search">
-          </form>
-        </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Facility
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/facility/add-facility">Add new Facility</a></li>
+            <li><a class="dropdown-item" href="#">Manager Facility</a></li>
+          </ul>
+        </li>
         <div id="account">
           <a href="#" class="btn btn-sm btn-outline-warning">
             <fa-icon [icon]="faSign"></fa-icon>

@@ -6,7 +6,10 @@ export const environment = {
   production: false,
   URL_API: 'http://localhost:3000/products',
   URL_API_ToDo: 'http://localhost:3000/tasks',
-  URL_API_CATEGORY: 'http://localhost:3000/categorys'
+  URL_API_CATEGORY: 'http://localhost:3000/categorys',
+  URL_API_FACILITY: 'http://localhost:3000/facilitys',
+  URL_API_FACILITY_TYPE: 'http://localhost:3000/facilityTypes',
+  URL_API_RENT_TYPE: 'http://localhost:3000/rentTypes',
 
 };
 
