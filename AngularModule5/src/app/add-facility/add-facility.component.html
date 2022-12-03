@@ -1,6 +1,6 @@
-<div class="container-fluid bg-secondary">
+<div class="container-fluid bg-secondary" style="min-height: 100vh">
   <div class="container wrapper">
-    <form action="" class="form-facility__create bg-light">
+    <form [formGroup]="rfFacility" (ngSubmit)="addFacility()" class="form-facility__create bg-light">
       <h3 class="create-facility-heading">Create New Facility</h3>
       <table class="table-facility__create">
         <tr>
@@ -11,7 +11,7 @@
             </label>
           </td>
           <td>
-            <input type="text" placeholder=" Name" id="facility-name">
+            <input type="text" formControlName="name" placeholder=" Name" id="facility-name" value="">
           </td>
         </tr>
         <tr>
@@ -19,7 +19,7 @@
             <label for="facility-area"><i class="fa-solid fa-chart-area"></i>Area </label>
           </td>
           <td>
-            <input type="text" placeholder=" Area" id="facility-area">
+            <input type="text" formControlName="area" placeholder=" Area" id="facility-area">
           </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
             <label for="facility-cost"><i class="fa-solid fa-sack-dollar"></i>Cost </label>
           </td>
           <td>
-            <input type="text" placeholder=" Cost" id="facility-cost">
+            <input type="text" formControlName="cost" placeholder=" Cost" id="facility-cost">
           </td>
         </tr>
         <tr>
@@ -35,20 +35,19 @@
             <label for="facility-rent-type"><i class="fa-solid fa-gem"></i>Rent type </label>
           </td>
           <td>
-            <select name="rent-type" id="facility-rent-type">
-              <option value="">Day</option>
-              <option value="">Month</option>
-              <option value="">Hour</option>
-              <option value="">Year</option>
+            <select name="rent-type" id="facility-rent-type" formControlName="rentType">
+              <option *ngFor="let renType of renTypes" [value]="renType.id">{{renType.name}}</option>
             </select>
           </td>
         </tr>
         <tr>
           <td>
-            <label for="facility-max-people"><i class="fa-solid fa-users"></i>Max people </label>
+            <label for="facility-max-people">
+              <i class="fa-solid fa-users"></i>Max people
+            </label>
           </td>
           <td>
-            <input type="text" placeholder=" Max people" id="facility-max-people">
+            <input type="text" formControlName="maxPeople" placeholder=" Max people" id="facility-max-people">
           </td>
         </tr>
       </table>
@@ -58,10 +57,8 @@
               <label for="facility-type"><i class="fa-solid fa-house"></i>Facility Type </label>
             </td>
             <td>
-              <select name="rent-type" id="facility-type">
-                <option value="">Villa</option>
-                <option value="">House</option>
-                <option value="">Room</option>
+              <select formControlName="facilityType" id="facility-type" (change)="autoFacilityType()">
+                <option *ngFor="let facilityType of facilityTypes" [value]="facilityType.id">{{facilityType.name}}</option>
               </select>
             </td>
           </tr>
@@ -70,7 +67,7 @@
               <label for="facility-stand-room"><i class="fa-solid fa-pen-nib"></i>Stand room </label>
             </td>
             <td>
-              <input type="text" placeholder=" Stand room" id="facility-stand-room">
+              <input type="text" formControlName="standRoom" placeholder=" Stand room" id="facility-stand-room">
             </td>
           </tr>
           <tr class="house-property">
@@ -78,7 +75,7 @@
               <label for="facility-description"><i class="fa-solid fa-pen-nib"></i>Description </label>
             </td>
             <td>
-              <textarea name="" id="facility-description" cols="30" rows="3"></textarea>
+              <textarea name="" formControlName="description" id="facility-description" cols="30" rows="3"></textarea>
             </td>
           </tr>
           <tr class="house-property">
@@ -86,7 +83,7 @@
               <label for="facility-floor"><i class="fa-solid fa-pen-nib"></i>Floors of number </label>
             </td>
             <td>
-              <input type="text" placeholder="Floor" id="facility-floor">
+              <input type="text" formControlName="floors" placeholder="Floor" id="facility-floor">
             </td>
           </tr>
           <tr class="villa-property">
@@ -94,7 +91,7 @@
               <label for="facility-pool-area"><i class="fa-solid fa-chart-area"></i>Pool area </label>
             </td>
             <td>
-              <input type="text" placeholder="Pool area" id="facility-pool-area">
+              <input type="text" formControlName="poolArea" placeholder="Pool area" id="facility-pool-area">
             </td>
           </tr>
           <tr class="room-property">
@@ -102,7 +99,7 @@
               <label for="facility-free"><i class="fa-solid fa-pen-nib"></i>Facility free </label>
             </td>
             <td>
-              <input type="text" placeholder="Free service" id="facility-free">
+              <input type="text" formControlName="freeService" placeholder="Free service" id="facility-free">
             </td>
           </tr>
       </table>

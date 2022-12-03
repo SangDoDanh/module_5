@@ -1,33 +1,23 @@
 {
   "products": [
     {
-      "id": 2,
-      "name": "iphone 13",
-      "description": "iphone 13 pro max gold, 1TB",
-      "price": "1300",
+      "id": 3,
+      "name": "iphone 12",
+      "description": "iphone 12 pro max black, 1TB",
+      "price": 1000,
       "category": {
         "id": 2,
         "name": "laptop"
       }
     },
     {
-      "name": "iphone 12",
-      "id": 3,
-      "price": 1000,
-      "description": "iphone 12 pro max black, 1TB",
-      "category": {
-        "name": "phone",
-        "id": 1
-      }
-    },
-    {
-      "name": "Mac 16 pro",
       "id": 4,
-      "price": 1000,
+      "name": "Mac 16 pro",
       "description": "Mac 16pro 32g, cpu 16, 1TB",
+      "price": 1000,
       "category": {
-        "name": "laptop",
-        "id": 2
+        "id": 2,
+        "name": "laptop"
       }
     }
   ],

@@ -24,10 +24,22 @@ export class FacilityService {
     console.log('name-search: ', searchForm.nameSearch);
     console.log('rent-type: ', searchForm.rentType);
     console.log('facility-type: ', searchForm.facilityType);
+    if (!searchForm.rentType && searchForm.facilityType) {
+      return this._httpClient.get<Facility[]>(environment.URL_API_FACILITY +
+        '?name_like=' + searchForm.nameSearch +
+        '&facilityType.id=' + searchForm.facilityType +
+        '&rentType.id_like=' + searchForm.rentType);
+    }
+    if (searchForm.rentType && !searchForm.facilityType) {
+      return this._httpClient.get<Facility[]>(environment.URL_API_FACILITY +
+        '?name_like=' + searchForm.nameSearch +
+        '&facilityType.id_like=' + searchForm.facilityType +
+        '&rentType.id=' + searchForm.rentType);
+    }
     return this._httpClient.get<Facility[]>(environment.URL_API_FACILITY +
       '?name_like=' + searchForm.nameSearch +
-      '&facilityType.id_like=' + searchForm.facilityType +
-      '&rentType.id_like=' + searchForm.rentType);
+      '&facilityType.id=' + searchForm.facilityType +
+      '&rentType.id=' + searchForm.rentType);
   }
 
   getAllRentType(): Observable<RentType[]> {

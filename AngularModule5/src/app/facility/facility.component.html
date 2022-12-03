@@ -6,11 +6,11 @@
       <form [formGroup]="searchForm" (ngSubmit)="search()" class="d-flex w-auto">
         <input formControlName="nameSearch" type="text" class="form-control mx-2" placeholder="Search by name...">
         <select formControlName="rentType" class="form-select w-auto mx-2" (change)="search()">
-          <option [value]="1>0?'':''">--Select Rent Type--</option>
+          <option [value]="''">--Select Rent Type--</option>
           <option *ngFor="let rentType of renTypes" [value]="rentType.id">{{rentType.name}}</option>
         </select>
         <select formControlName="facilityType" class="form-select w-auto mx-2" (change)="search()">
-          <option [value]="1>0?'':''">--Select Facility Type--</option>
+          <option [value]="''">--Select Facility Type--</option>
           <option *ngFor="let facilityType of facilityTypes" [value]="facilityType.id">{{facilityType.name}}</option>
         </select>
       </form>
