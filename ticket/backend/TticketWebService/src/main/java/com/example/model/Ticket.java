@@ -14,7 +14,7 @@ public class Ticket {
     private String end;
     private String startDay;
     private String startHours;
-    private int quality;
+    private Integer quality;
 
     @ManyToOne
     @JoinColumn(name = "garage_id", referencedColumnName = "id")
@@ -72,11 +72,11 @@ public class Ticket {
         this.startHours = startHours;
     }
 
-    public int getQuality() {
+    public Integer getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    public void setQuality(Integer quality) {
         this.quality = quality;
     }
 

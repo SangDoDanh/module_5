@@ -109,6 +109,6 @@
           <option *ngFor="let garage of garages" [ngValue]="garage">{{garage.name}}</option>
         </select>
       </div>
-      <button type="button" (click)="updateTicket()" class=" w-100 btn btn-primary">Lưu</button>
+      <button [disabled]="rfTicket.invalid" type="button" (click)="updateTicket()" class=" w-100 btn btn-primary">Lưu</button>
     </form>
   </div>

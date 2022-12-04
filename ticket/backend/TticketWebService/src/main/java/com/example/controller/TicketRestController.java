@@ -3,11 +3,15 @@ package com.example.controller;
 import com.example.dto.TicketDTO;
 import com.example.model.Ticket;
 import com.example.service.ITicketService;
-import com.example.service.impl.TicketService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,15 +24,10 @@ import java.util.Optional;
 public class TicketRestController {
     @Autowired
     private ITicketService ticketService;
-
-//    @GetMapping("")
-//    public ResponseEntity<List<Ticket>> findAllTicket() {
-//        List<Ticket> ticketList = ticketService.findAll();
-//        return new ResponseEntity<>(ticketList, HttpStatus.OK);
-//    }
     @GetMapping("")
-    public ResponseEntity<List<TicketDTO>> findAllTicket() {
-        List<Ticket> ticketList = ticketService.findAll();
+    public ResponseEntity<List<TicketDTO>> findAllTicket(@PageableDefault(value = 3) Pageable pageable) {
+        Page<Ticket> ticketPage = ticketService.findAll(pageable);
+        List<Ticket> ticketList = ticketPage.getContent();
         List<TicketDTO> ticketDTOList = new ArrayList<>();
         ticketList.forEach(ticket -> {
             TicketDTO ticketDTO = new TicketDTO();
@@ -38,17 +37,59 @@ public class TicketRestController {
         return new ResponseEntity<>(ticketDTOList, HttpStatus.OK);
     }
 
+
+    /**
+     * Lấy ra page<Ticket> và search
+     * @param start: Điểm đi Thông tin search
+     * @param end: Điểm đến Thông tin search
+     * @param startDay: Ngày bắt đầu thông tin seach
+     * @param endDay: Ngày kết thúc thông tin seach
+     * @param pageable
+     * @return
+     */
+    @GetMapping("/pg")
+    public ResponseEntity<Page<Ticket>> findAllTicketPg(@RequestParam(required = false, defaultValue = "") String start,
+                                                        @RequestParam(required = false, defaultValue = "") String end,
+                                                        @RequestParam(required = false, defaultValue = "") String startDay,
+                                                        @RequestParam(required = false, defaultValue = "") String endDay,
+                                                        @PageableDefault(value = 3) Pageable pageable) {
+        Page<Ticket> ticketPageAndSearch = this.ticketService.findAll(start, end, startDay, endDay, pageable);
+        return new ResponseEntity<>(ticketPageAndSearch, HttpStatus.OK);
+    }
+
+
+    /**
+     * Lấy ticketDTO theo id
+     * @param id
+     * @return ResponseEntity<TicketDTO>
+     */
     @GetMapping("/{id}")
-    public ResponseEntity<Ticket> findById(@PathVariable() int id) {
+    public ResponseEntity<TicketDTO> findById(@PathVariable() int id) {
         Optional<Ticket> ticketOptional = ticketService.findById(id);
         if(!ticketOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(ticketOptional.get(), HttpStatus.OK);
+        TicketDTO ticketDTO = new TicketDTO();
+        BeanUtils.copyProperties(ticketOptional.get(), ticketDTO);
+        return new ResponseEntity<>(ticketDTO, HttpStatus.OK);
     }
 
+    /**
+     * Cập nhật thông tin cho ticket, có validate
+     * @param id id ticket sẽ cập nhật
+     * @param ticketDTO thông tin TicketDto sau cập nhật
+     * @param bindingResult
+     * @return ResponseEntity<TicketDTO>
+     */
     @PutMapping("/{id}")
-    public ResponseEntity<TicketDTO> updateTicket(@PathVariable int id, @RequestBody TicketDTO ticketDTO) {
+    public ResponseEntity<TicketDTO> updateTicket(@PathVariable int id,
+                                                  @Validated @RequestBody TicketDTO ticketDTO,
+                                                  BindingResult bindingResult) {
+
+        new TicketDTO().validate(ticketDTO, bindingResult);
+        if(bindingResult.hasFieldErrors("price") || bindingResult.hasFieldErrors("quality")) {
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        }
         Optional<Ticket> ticketOptional = ticketService.findTicketById(id);
         if(ticketOptional.isPresent()) {
             Ticket ticket = new Ticket();
@@ -59,12 +100,30 @@ public class TicketRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Thêm mới ticket có validate trả về vé được tạo mới
+     * @param ticketDTO vé được tạo mới
+     * @param bindingResult
+     * @return ResponseEntity<TicketDTO>
+     */
     @PostMapping("")
-    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {
+    public ResponseEntity<TicketDTO> createTicket(@Validated @RequestBody TicketDTO ticketDTO,
+                                               BindingResult bindingResult) {
+        new TicketDTO().validate(ticketDTO, bindingResult);
+        if(bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
+        }
+        Ticket ticket = new Ticket();
+        BeanUtils.copyProperties(ticketDTO, ticket);
         ticketService.save(ticket);
-        return new ResponseEntity<>(ticket, HttpStatus.CREATED);
+        return new ResponseEntity<>(ticketDTO, HttpStatus.CREATED);
     }
 
+    /**
+     * Xóa mềm ticket theo id
+     * @param id id ticket bị xóa
+     * @return ResponseEntity<Void>
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTicket(@PathVariable int id) {
         Optional<Ticket> ticketOptional = ticketService.findById(id);
@@ -75,14 +134,5 @@ public class TicketRestController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @GetMapping("/search")
-    public ResponseEntity<List<Ticket>> search(@RequestParam(required = false, defaultValue = "") String start,
-                                               @RequestParam(required = false, defaultValue = "") String end,
-                                               @RequestParam(required = false, defaultValue = "") String startDay,
-                                               @RequestParam(required = false, defaultValue = "") String endDay) {
-        List<Ticket> ticketList = ticketService.search(start, end, startDay, endDay);
-        return new ResponseEntity<>(ticketList, HttpStatus.OK);
     }
 }

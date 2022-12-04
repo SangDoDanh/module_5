@@ -93,6 +93,8 @@ export class TicketEditComponent implements OnInit {
     this._ticketService.edit(this.rfTicket.value).subscribe(data => {
       this._ticketService.message = 'Cập nhật vé xe thành công.';
       this._router.navigateByUrl('/');
+    }, error => {
+      console.log('loi', error);
     });
   }
 }

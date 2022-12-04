@@ -13,10 +13,6 @@ export class TickService {
   message = '';
   constructor(private _httpClient: HttpClient) { }
 
-  findAll(): Observable<Ticket[]> {
-    return this._httpClient.get<Ticket[]>(environment.URL_API_TICKET);
-  }
-
   create(ticket: any): Observable<Ticket> {
     return  this._httpClient.post<Ticket>(environment.URL_API_TICKET, ticket);
   }
@@ -43,5 +39,14 @@ export class TickService {
 
   remove(id: any): Observable<void> {
     return this._httpClient.delete<void>(environment.URL_API_TICKET + '/' + id);
+  }
+  getPageTicket(pageNumber: number, rfSearch: any): Observable<any>   {
+    return this._httpClient.get<any>(environment.URL_API_TICKET +
+      '/pg?page=' + pageNumber +
+      '&start=' + rfSearch.start +
+      '&end=' + rfSearch.end +
+      '&startDay=' + rfSearch.startDay +
+      '&endDay=' + rfSearch.endDay
+    );
   }
 }

@@ -5,6 +5,7 @@ import {Gara} from '../model/gara';
 import {GaraService} from '../service/gara.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {PageTicket} from '../model/page-ticket';
 
 @Component({
   selector: 'app-ticket',
@@ -12,14 +13,11 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent implements OnInit {
-
-  tickets: Ticket[];
-  p: string | number;
+  pageTickets: PageTicket;
   garages: Gara[];
   rfSearch:FormGroup;
-
-  startDay = '';
-  endDay = '';
+  startDay = '';// Mốc Ngày bắt đầu cho ngày khởi hành
+  endDay = '';// Mốc Ngày kết thúc cho ngày khởi hành
   garageDefault: Gara = {
     id: 1,
     name: "garage1",
@@ -37,9 +35,6 @@ export class TicketComponent implements OnInit {
     status: false
   };
 
-  compareGarage(o1: Gara, o2: Gara) {
-    return o1.id == o2.id;
-  };
   constructor(private _ticketService: TickService,
               private _garageService: GaraService,
               private _formBuilder:FormBuilder,
@@ -50,9 +45,6 @@ export class TicketComponent implements OnInit {
       this.showMessage(this._ticketService.message);
       this._ticketService.message = '';
     }
-    this._ticketService.findAll().subscribe(data => {
-      this.tickets = data;
-    });
     this._garageService.findAll().subscribe(data => {
       this.garages = data;
     });
@@ -61,7 +53,8 @@ export class TicketComponent implements OnInit {
       end:[''],
       startDay:[''],
       endDay:[''],
-    })
+    });
+    this.goToPage(0);
   }
   showMessage(mess: string) {
     this._toastService.success(mess, '', {
@@ -78,26 +71,26 @@ export class TicketComponent implements OnInit {
       this._ticketService.book(data).subscribe(value => {
         this.showMessage('Đặt vé thành công');
         document.getElementById('close-modal-book').click();
-        this._ticketService.findAll().subscribe(data => {
-          this.tickets = data;
-        });
+        this.goToPage(this.pageTickets.number);
       });
     });
   }
 
-  search() {
-    this.setDay();
-    this._ticketService.search(this.rfSearch.value).subscribe(data => {
-      this.tickets = data;
-    });
-  }
-
+  /**
+   * Gán thông tin cho ticketBook từ ticket tìm theo id
+   * @param id
+   */
   setValue(id: number) {
     this._ticketService.findTicketByid(id).subscribe(data => {
       this.ticketBook = data;
     });
   }
 
+  /**
+   * Gán lại giá trị hai mốc ngày(ngày bắt đầu, ngày kết thúc)
+   * Ngày khởi hành sẽ nằm trong mốc ngày này
+   * @private
+   */
   private setDay() {
     if(!this.rfSearch.value.startDay) {
       this.rfSearch.value.startDay = '0001-01-01';
@@ -105,5 +98,17 @@ export class TicketComponent implements OnInit {
     if(!this.rfSearch.value.endDay) {
       this.rfSearch.value.endDay = '9999-12-31';
     }
+  }
+
+  /**
+   * Đi đến page với pageNumber tuương ứng, có kết hợp search
+   * @param pageNumber: vị trí trang hiện tại
+   */
+  goToPage(pageNumber: number) {
+    this.setDay();
+    this._ticketService.getPageTicket(pageNumber, this.rfSearch.value).subscribe(data => {
+      console.log(data.content);
+      this.pageTickets = data;
+    });
   }
 }

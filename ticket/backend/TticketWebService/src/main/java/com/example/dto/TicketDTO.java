@@ -1,15 +1,25 @@
 package com.example.dto;
 
 import com.example.model.Garage;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-public class TicketDTO {
+import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+public class TicketDTO implements Validator {
     private Integer id;
     private Double price;
+    @NotBlank(message = "Không được bỏ trống")
+    @Size(min = 3, max = 30, message = "Số ký tự tối thiểu: 3, tối đa 30")
     private String start;
+    @NotBlank(message = "Không được bỏ trống")
+    @Size(min = 3, max = 30, message = "Số ký tự tối thiểu: 3, tối đa 30")
     private String end;
     private String startDay;
     private String startHours;
-    private int quality;
+    private Integer quality;
     private Garage garage;
     private boolean status;
 
@@ -80,11 +90,73 @@ public class TicketDTO {
         this.startHours = startHours;
     }
 
-    public int getQuality() {
+    public Integer getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    public void setQuality(Integer quality) {
         this.quality = quality;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        TicketDTO ticketDTO = (TicketDTO) target;
+        Double price = ticketDTO.getPrice();
+        String startDay = ticketDTO.getStartDay();
+        String startHours = ticketDTO.getStartHours();
+        Integer quality = ticketDTO.getQuality();
+        String regexDay = "^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$";
+        String regexHours = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
+
+        //validate price
+        if(price == null) {
+            errors.rejectValue("price", "", "Không được bỏ trống");
+        } else if(price < 0 || price > 1000000) {
+            errors.rejectValue("price", "", "Giá trị tối thiểu: 0, tối đa: 1000000");
+        }
+
+        //validate startDay
+        if(startDay == null || "".equals(startDay)) {
+            errors.rejectValue("startDay", "", "Không được bỏ trống");
+        } else if (!startDay.matches(regexDay)) {
+            errors.rejectValue("startDay", "", "Vui lòng nhập đúng định dạng sau: yyyy-mm-dd");
+        } else {
+            LocalDate now = LocalDate.now();
+            LocalDate startLocalDate = LocalDate.parse(startDay);
+
+            if(startLocalDate.compareTo(now) < 0) {
+                errors.rejectValue("startDay", "", "Bạn đang chọn một ngày trong khóa khứ: yyyy-mm-dd");
+            }
+        }
+
+        //validate startHours
+        if(startHours == null) {
+            errors.rejectValue("startHours", "", "Không được bỏ trống");
+        } else if(startHours.trim().equals("")) {
+            errors.rejectValue("startHours", "", "Không được bỏ trống");
+        } else if(!startHours.matches(regexHours)) {
+            errors.rejectValue("startHours", "", "Vui lòng nhập đúng định dạng sau: hh:mm");
+        } else {
+            LocalDateTime now = LocalDateTime.now();
+            String[] startHoursArr = startHours.split(":");
+            if(now.getHour() > Integer.parseInt(startHoursArr[0])) {
+                errors.rejectValue("startHours", "", "Bạn đang chọn giờ khởi hành trong khóa khứ");
+            } else if(now.getMinute() > Integer.parseInt(startHoursArr[1])) {
+                errors.rejectValue("startHours", "", "Bạn đang chọn giờ khởi hành trong khóa khứ");
+            }
+        }
+
+        // validate quality
+        if(quality == null) {
+            errors.rejectValue("quality", "", "Không được bỏ trống");
+        } else if (quality < 0 || quality > 1000){
+            errors.rejectValue("quality", "", "Số lượng tối thiểu: 0, tối đa: 1000");
+        }
+
     }
 }

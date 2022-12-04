@@ -4,6 +4,8 @@ import com.example.model.Ticket;
 import com.example.repository.ITicketRepository;
 import com.example.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +18,6 @@ public class TicketService implements ITicketService {
     private ITicketRepository ticketRepository;
 
     @Override
-    public List<Ticket> findAll() {
-        return ticketRepository.findTickAll();
-    }
-
-    @Override
     public Optional<Ticket> findById(Integer id) {
         return ticketRepository.findById(id);
     }
@@ -31,12 +28,17 @@ public class TicketService implements ITicketService {
     }
 
     @Override
-    public List<Ticket> search(String start, String end, String startDay, String endDay) {
-        return ticketRepository.search(start, end, startDay, endDay);
+    public Optional<Ticket> findTicketById(int id) {
+        return ticketRepository.findTicketById(id);
     }
 
     @Override
-    public Optional<Ticket> findTicketById(int id) {
-        return ticketRepository.findTicketById(id);
+    public Page<Ticket> findAll(Pageable pageable) {
+        return ticketRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Ticket> findAll(String start, String end, String startDay, String endDay, Pageable pageable) {
+        return ticketRepository.findAndSearch( start, end, startDay, endDay, pageable);
     }
 }
