@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TickService} from '../service/tick.service';
 import {GaraService} from '../service/gara.service';
 import {Gara} from '../model/gara';
@@ -16,14 +16,17 @@ export class TicketEditComponent implements OnInit {
   rfTicket: FormGroup;
   garages: Gara[];
   ticketId: number;
-  compareGarage(o1: Gara, o2: Gara){
+
+  compareGarage(o1: Gara, o2: Gara) {
     return o1.id == o2.id;
   };
+
   constructor(private _ticketService: TickService,
               private _garageService: GaraService,
               private _formBuilder: FormBuilder,
               private _router: Router,
-              private _routerActived: ActivatedRoute) { }
+              private _routerActived: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this._garageService.findAll().subscribe(data => {
@@ -33,20 +36,62 @@ export class TicketEditComponent implements OnInit {
     this._ticketService.findTicketByid(this.ticketId).subscribe(data => {
       this.rfTicket = this._formBuilder.group({
         id: [data.id],
-        price:[data.price],
-        start: [data.start],
-        end: [data.end],
-        startDay: [data.startDay],
-        startHours: [data.startHours],
+        price: [
+          data.price,
+          [
+            Validators.required,
+            Validators.min(0),
+            Validators.max(1000000),
+            Validators.pattern('^\\d+\\.*\\d*$')
+          ]
+        ],
+        start: [
+          data.start,
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(30)
+          ]
+        ],
+        end: [
+          data.end,
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(30)
+          ]
+        ],
+        startDay: [
+          data.startDay,
+          [
+            Validators.required,
+            Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$')
+          ]
+        ],
+        startHours: [
+          data.startHours,
+          [
+            Validators.required,
+            Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$'),
+          ]
+        ],
         garage: [data.garage],
-        quality: [data.quality]
+        quality: [
+          data.quality,
+          [
+            Validators.required,
+            Validators.min(0),
+            Validators.max(1000),
+            Validators.pattern('^\\d*$'),
+          ]
+        ]
       });
     });
   }
 
   updateTicket() {
-    console.log(this.rfTicket.value);
     this._ticketService.edit(this.rfTicket.value).subscribe(data => {
+      this._ticketService.message = 'Cập nhật vé xe thành công.';
       this._router.navigateByUrl('/');
     });
   }

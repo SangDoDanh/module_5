@@ -53,6 +53,7 @@ export class TicketDeleteComponent implements OnInit {
 
   deleteTicket() {
     this._ticketService.remove(this.rfTicket.value.id).subscribe(data => {
+      this._ticketService.message = 'Xóa vé xe thành công';
       this._router.navigateByUrl('/');
     });
   }

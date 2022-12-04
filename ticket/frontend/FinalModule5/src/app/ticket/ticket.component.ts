@@ -46,6 +46,10 @@ export class TicketComponent implements OnInit {
               private _toastService: ToastrService) { }
 
   ngOnInit(): void {
+    if(this._ticketService.message) {
+      this.showMessage(this._ticketService.message);
+      this._ticketService.message = '';
+    }
     this._ticketService.findAll().subscribe(data => {
       this.tickets = data;
     });

@@ -10,6 +10,7 @@ import {TicketComponent} from '../ticket/ticket.component';
 })
 export class TickService {
 
+  message = '';
   constructor(private _httpClient: HttpClient) { }
 
   findAll(): Observable<Ticket[]> {
